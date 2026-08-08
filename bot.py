@@ -14,9 +14,8 @@ from firebase_admin import credentials, db
 from github import Github, Auth
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-KEY_PATH = os.path.join(BASE_DIR, "serviceAccountKey.json.json")
-
-cred = credentials.Certificate(KEY_PATH)
+firebase_data = json.loads(os.environ["FIREBASE_CREDENTIALS"])
+cred = credentials.Certificate(firebase_data)
 firebase_admin.initialize_app(
     cred, {"databaseURL": "https://test-82a8a-default-rtdb.firebaseio.com/"}
 )
