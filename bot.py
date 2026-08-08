@@ -25,19 +25,14 @@ import os
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
-g = Github(auth=Auth.Token(GITHUB_TOKEN))
-bot = Bot(BOT_TOKEN)
-
-if not token or not tk:
+if not BOT_TOKEN or not GITHUB_TOKEN:
     raise RuntimeError(
-        "BOT_TOKEN yoki GITHUB_TOKEN environment variable topilmadi. "
-        "Ularni tizim muhitida o'rnating."
+        "BOT_TOKEN yoki GITHUB_TOKEN Railway Variables'da topilmadi."
     )
 
-g = Github(auth=Auth.Token(tk))
-bot = Bot(token=token)
+g = Github(auth=Auth.Token(GITHUB_TOKEN))
+bot = Bot(token=BOT_TOKEN)
 z = Dispatcher()
-
 
 # State (Holat) sinfi
 class Form(StatesGroup):
